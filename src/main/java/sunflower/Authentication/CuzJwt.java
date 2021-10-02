@@ -23,6 +23,8 @@ public class CuzJwt {
     //令牌的名称
     private String header;
 
+    private String prefix;
+
     // 根据登录输入的用户名,生成相关的JWT令牌
     public String generatorJWT(String username) {
 
@@ -49,13 +51,14 @@ public class CuzJwt {
 
             return Jwts.parser()
                     .setSigningKey(secret) // 设置解析用的密钥
-                    .parseClaimsJwt(token) // 解析Cliams部分
+                    .parseClaimsJws(token.split(prefix)[1]) // 解析Cliams部分
                     .getBody(); // 返回
 
 
         } catch (Exception e) {
             System.out.println("JWT令牌错误");
-            return null;
+            e.printStackTrace();
+            throw e;
         }
 
     }

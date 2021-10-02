@@ -13,7 +13,6 @@ import javax.validation.Valid;
 
 @RestController
 @Validated
-@RequestMapping("/authentication")
 public class AuthenticationController {
 
     private final AuthenticationService authenticationService;
@@ -22,12 +21,9 @@ public class AuthenticationController {
         this.authenticationService = authenticationService;
     }
 
-    @PostMapping
+    @PostMapping("/auth")
     public AuthenticationResponse authentication(@RequestBody String authentication) {
-        if (authentication.equals("authentication")) {
-            return AuthenticationResponse.builder().code(1).msg("auth success").build();
-        }
-        throw new RuntimeException();
+        return authenticationService.verify(authentication);
     }
 
     @PostMapping("/register")

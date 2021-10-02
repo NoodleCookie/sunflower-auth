@@ -28,29 +28,33 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         this.sunUserRepository = sunUserRepository;
     }
 
-    @Override
-    public AuthenticationResponse auth(String username) {
+    public AuthenticationResponse getJwt(String username) {
         return AuthenticationResponse.builder().code(HttpStatus.CREATED.value()).msg(cuzJwt.generatorJWT(username)).build();
+    }
+
+    private AuthenticationResponse auth(String username) {
+        return null;
     }
 
     @Override
     public AuthenticationResponse verify(String token) {
         Claims claims = cuzJwt.parseJWT(token);
-        return null;
+        if (cuzJwt.isExpireJwt(claims)) {
+            throw new RuntimeException("jwr is expired");
+        }
+        return AuthenticationResponse.builder().code(200).msg(claims.toString()).build();
     }
 
     @SneakyThrows
     @Override
     @Transactional
     public AuthenticationResponse register(RegisterRequest registerRequest) {
-        SunUser savedUser = sunUserRepository.save(SunUser.builder()
+        sunUserRepository.save(SunUser.builder()
                 .id(UUID.randomUUID().toString())
                 .username(registerRequest.getUsername())
                 .password(registerRequest.getPassword())
                 .enable(true).build());
 
-        return AuthenticationResponse.builder()
-                .code(200)
-                .msg(new ObjectMapper().writeValueAsString(savedUser)).build();
+        return getJwt(registerRequest.getUsername());
     }
 }
