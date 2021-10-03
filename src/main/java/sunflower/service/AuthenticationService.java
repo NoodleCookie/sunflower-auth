@@ -1,11 +1,13 @@
 package sunflower.service;
 
 import sunflower.dto.AuthenticationResponse;
-import sunflower.dto.RegisterRequest;
+import sunflower.dto.AuthenticationRequest;
 
 public interface AuthenticationService {
 
     AuthenticationResponse verify(String token);
 
-    AuthenticationResponse register(RegisterRequest registerRequest);
+    AuthenticationResponse register(AuthenticationRequest authenticationRequest);
+
+    AuthenticationResponse login(AuthenticationRequest authenticationRequest);
 }

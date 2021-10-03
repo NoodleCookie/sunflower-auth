@@ -1,0 +1,1 @@
+alter table `sunflower`.sunflower_user modify sun_password varchar(100);
