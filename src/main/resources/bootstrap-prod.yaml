@@ -1,0 +1,18 @@
+server:
+  port: 8520
+
+spring:
+  application:
+    name: sunflower-gateway
+  cloud:
+    nacos:
+      config:
+        file-extension: yaml
+        namespace: 5e5db205-81c9-4962-b0f8-ae042765b5ea
+        group: PROD_GROUP
+        server-addr: 8.140.110.215:8848
+      discovery:
+        server-addr: 8.140.110.215:8848
+        namespace: 5e5db205-81c9-4962-b0f8-ae042765b5ea
+        group: PROD_GROUP
+        ip: 8.140.110.215
