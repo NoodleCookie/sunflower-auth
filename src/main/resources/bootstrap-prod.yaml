@@ -1,9 +1,9 @@
 server:
-  port: 8520
+  port: 8521
 
 spring:
   application:
-    name: sunflower-gateway
+    name: sunflower-auth
   cloud:
     nacos:
       config:
