@@ -1,4 +1,4 @@
-package sunflower.Authentication;
+package sunflower.configuration;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

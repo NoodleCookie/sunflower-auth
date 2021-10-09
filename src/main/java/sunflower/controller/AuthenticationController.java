@@ -9,6 +9,7 @@ import sunflower.dto.AuthenticationRequest;
 import sunflower.service.AuthenticationService;
 
 import javax.validation.Valid;
+import java.util.Map;
 
 @RestController
 @Validated
@@ -33,5 +34,10 @@ public class AuthenticationController {
     @PostMapping("/login")
     public AuthenticationResponse login(@RequestBody @Valid AuthenticationRequest authenticationRequest) {
         return authenticationService.login(authenticationRequest);
+    }
+
+    @PostMapping("/wx-auth")
+    public Map<String, String> wxLogin(@RequestBody Map<String, String> request) {
+        return authenticationService.wxLogin(request);
     }
 }
