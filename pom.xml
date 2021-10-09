@@ -135,7 +135,7 @@
 
                 <configuration>
                     <includeSystemScope>true</includeSystemScope>
-                    <mainClass>thoughtworks.rachael.zuul.RachaelZuulApplication</mainClass>
+                    <mainClass>sunflower.SunflowerAuthApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>
