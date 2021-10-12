@@ -8,11 +8,11 @@ spring:
     nacos:
       config:
         file-extension: yaml
-        namespace: 5e5db205-81c9-4962-b0f8-ae042765b5ea
+        namespace: 923b2ce7-8e81-4ddd-a9ee-04db4c1afd66
         group: PROD_GROUP
-        server-addr: 8.140.110.215:8848
+        server-addr: 60.205.224.166:8848
       discovery:
-        server-addr: 8.140.110.215:8848
-        namespace: 5e5db205-81c9-4962-b0f8-ae042765b5ea
+        server-addr: 60.205.224.166:8848
+        namespace: 923b2ce7-8e81-4ddd-a9ee-04db4c1afd66
         group: PROD_GROUP
         ip: 60.205.224.166
