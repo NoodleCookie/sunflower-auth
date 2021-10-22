@@ -29,6 +29,8 @@ public class SunUser {
     @Column(name = "sun_password")
     private String password;
 
+    private String nickName;
+
     @CreatedDate
     @Column(name = "sun_create_time")
     @JsonIgnore
@@ -37,4 +39,6 @@ public class SunUser {
     @Column(name = "sun_enable")
     @JsonIgnore
     private boolean enable;
+
+    private String avatar_url;
 }
