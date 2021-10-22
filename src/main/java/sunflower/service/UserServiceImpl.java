@@ -29,8 +29,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public SunUser changeNickName(String nickName) {
-        return null;
+    public String changeNickName(String nickName) {
+        return sunUserRepository.updateNicknamelByUsername(nickName,UserContext.getUser());
     }
 
     @SneakyThrows

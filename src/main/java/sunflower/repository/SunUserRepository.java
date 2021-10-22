@@ -17,4 +17,8 @@ public interface SunUserRepository extends JpaRepository<SunUser,String> {
     @Query("update SunUser u set u.avatar_url=?1 where u.username=?2")
     void updateAvatarUrlByUsername(String avatar,String username);
 
+    @Modifying
+    @Query("update SunUser u set u.nickName=?1 where u.username=?2")
+    String updateNicknamelByUsername(String nickname,String username);
+
 }

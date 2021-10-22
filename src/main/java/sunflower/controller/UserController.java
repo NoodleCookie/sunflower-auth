@@ -5,6 +5,8 @@ import org.springframework.web.multipart.MultipartFile;
 import sunflower.entity.SunUser;
 import sunflower.service.UserService;
 
+import java.util.Map;
+
 @RestController
 public class UserController {
 
@@ -22,6 +24,11 @@ public class UserController {
     @GetMapping("/user")
     public SunUser get() {
         return userService.getUserInfo();
+    }
+
+    @PostMapping("/user/nickname")
+    public String getNickname(Map<String,String> nickname) {
+        return userService.changeNickName(nickname.get("nickname"));
     }
 
 }
