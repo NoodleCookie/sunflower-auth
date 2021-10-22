@@ -5,9 +5,9 @@ import org.springframework.web.multipart.MultipartFile;
 import sunflower.entity.SunUser;
 
 public interface UserService {
-    String changeNickName(String nickName);
+    void changeNickName(String nickName);
 
-    String changeAvatarUrl(MultipartFile avatar);
+    void changeAvatarUrl(MultipartFile avatar);
 
     SunUser getUserInfo();
 }

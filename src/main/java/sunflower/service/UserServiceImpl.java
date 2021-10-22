@@ -29,17 +29,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String changeNickName(String nickName) {
-        return sunUserRepository.updateNicknamelByUsername(nickName,UserContext.getUser());
+    @Transactional
+    public void changeNickName(String nickName) {
+        sunUserRepository.updateNicknamelByUsername(nickName, UserContext.getUser());
     }
 
     @SneakyThrows
     @Override
     @Transactional
-    public String changeAvatarUrl(MultipartFile avatar) {
+    public void changeAvatarUrl(MultipartFile avatar) {
         String pathname = UserContext.getUser() + "-" + avatar.getOriginalFilename();
-        String url = null;
-
         try (FileOutputStream fileOutputStream = new FileOutputStream(pathname);
              InputStream inputStream = avatar.getInputStream()) {
             byte[] flush = new byte[1024];
@@ -52,7 +51,7 @@ public class UserServiceImpl implements UserService {
 
         OSS ossClient = null;
         try {
-            url = "http://thoughtworks-sunflower.oss-cn-beijing.aliyuncs.com/" + ossConfiguration.getDirectory() + "/" + pathname;
+            String url = "http://thoughtworks-sunflower.oss-cn-beijing.aliyuncs.com/" + ossConfiguration.getDirectory() + "/" + pathname;
             sunUserRepository.updateAvatarUrlByUsername(url, UserContext.getUser());
 
             ossClient = new OSSClientBuilder().build(ossConfiguration.getEndpoint(), ossConfiguration.getAccessKeyId(), ossConfiguration.getAccessKeySecret());
@@ -63,11 +62,9 @@ public class UserServiceImpl implements UserService {
 
             new File(pathname).delete();
 
-            return url;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return url;
     }
 
     @Override

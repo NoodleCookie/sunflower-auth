@@ -17,8 +17,8 @@ public class UserController {
     }
 
     @PostMapping("/user/avatar")
-    public String changeAvatar(@RequestPart("file") MultipartFile file) {
-        return userService.changeAvatarUrl(file);
+    public void changeAvatar(@RequestPart("file") MultipartFile file) {
+        userService.changeAvatarUrl(file);
     }
 
     @GetMapping("/user")
@@ -27,8 +27,8 @@ public class UserController {
     }
 
     @PostMapping("/user/nickname")
-    public String getNickname(Map<String,String> nickname) {
-        return userService.changeNickName(nickname.get("nickname"));
+    public void getNickname(Map<String, String> nickname) {
+        userService.changeNickName(nickname.get("nickname"));
     }
 
 }
