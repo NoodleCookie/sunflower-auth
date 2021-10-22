@@ -27,7 +27,7 @@ public class UserController {
     }
 
     @PostMapping("/user/nickname")
-    public void getNickname(Map<String, String> nickname) {
+    public void getNickname(@RequestBody Map<String, String> nickname) {
         userService.changeNickName(nickname.get("nickname"));
     }
 
