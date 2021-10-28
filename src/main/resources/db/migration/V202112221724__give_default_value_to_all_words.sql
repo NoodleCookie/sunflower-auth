@@ -1,0 +1,1 @@
+update sunflower.sunflower_word_card w set w.collected=true;
