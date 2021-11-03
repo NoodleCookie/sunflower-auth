@@ -11,11 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 public class ControllerTest {
 
-    @Value("${test}")
-    private String test;
 
     @GetMapping
     public String test() {
-        return "welcome to sunflower auth server: " + test;
+        return "welcome to sunflower auth server";
     }
 }
